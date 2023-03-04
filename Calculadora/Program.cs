@@ -1,48 +1,83 @@
 ﻿double num1, num2;
-int op = 0;
-void Menu()
+int opcao = 0;
+
+void Soma(double a, double b)
+{
+    Console.WriteLine($"A soma dos números é: {a + b}");
+    Console.ReadLine();
+}
+
+void Subtracao(double a, double b)
+{
+    Console.WriteLine($"A subtração dos números é: {a - b}");
+    Console.ReadLine();
+}
+
+void Multiplicacao(double a, double b)
+{
+    Console.WriteLine($"A multiplicação dos números é: {a * b}");
+    Console.ReadLine();
+}
+
+void Divisao(double a, double b)
+{
+    Console.WriteLine($"A divisão dos números é: {a / b}");
+    Console.ReadLine();
+}
+
+int Menu()
 {
     Console.Clear();
     Console.WriteLine("1 - Somar");
     Console.WriteLine("2 - Subtrair");
     Console.WriteLine("3 - Multiplicar");
     Console.WriteLine("4 - Dividir");
-    Console.WriteLine("0 - Sair");
+    Console.WriteLine("5 - Sair");
     Console.Write("Escolha uma opção:  ");
-    op = int.Parse(Console.ReadLine());
-    switch (op)
+    return int.Parse(Console.ReadLine());
+}
+
+double Valores()
+{
+    Console.Write("Informe o valor: ");
+    return double.Parse(Console.ReadLine());
+}
+
+int EscolheOperacao()
+{
+    switch (Menu())
     {
         default:
             Console.WriteLine("Opção inválida!!");
             Console.ReadLine();
-            break;
+            return 0;
         case 1:
-            Console.WriteLine($"A soma dos números é: {num1 + num2}");
-            Console.ReadLine();
-            break;
+            Soma(num1, num2);
+            return 1;
         case 2:
-            Console.WriteLine($"A subtração dos números é: {num1 - num2}");
-            Console.ReadLine();
-            break;
+            Subtracao(num1, num2);
+            return 2;
         case 3:
-            Console.WriteLine($"A multiplicação dos números é: {num1 * num2}");
-            Console.ReadLine();
-            break;
+            Multiplicacao(num1, num2);
+            return 3;
         case 4:
-            Console.WriteLine($"A divisão dos números é: {num1 / num2}");
-            Console.ReadLine();
-            break;
+            Divisao(num1, num2);
+            return 4;
         case 5:
-            Console.WriteLine($"Opção sair selecionada");
+            Console.WriteLine($"Volte sempre!");
             Console.ReadLine();
-            break;
+            return 5;
     }
 }
-Console.Write("Informe o primeiro número: ");
-num1 = double.Parse(Console.ReadLine());
-Console.Write("Informe o segundo número: ");
-num2 = double.Parse(Console.ReadLine());
-while (op != 5)
+
+
+
+num1 = Valores();
+num2 = Valores();
+
+while (opcao != 5)
 {
-    Menu();
+    opcao = EscolheOperacao();
+
+
 }
